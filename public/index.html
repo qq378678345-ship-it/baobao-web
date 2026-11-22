@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#06201a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>宝宝 · 朋友间四张牌</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+
+  <!-- ========== 首页 ========== -->
+  <section id="home" class="view">
+    <header class="hero">
+      <h1>宝 宝</h1>
+      <p class="sub">朋友间四张牌 · 只发牌 不比牌</p>
+    </header>
+
+    <div class="cardbox">
+      <label class="field">
+        <span>你的名字</span>
+        <div class="row-inline">
+          <input id="nick" maxlength="12" placeholder="怎么称呼你">
+          <button id="btnRand" class="btn-mini">随机</button>
+        </div>
+      </label>
+      <button id="btnCreate" class="btn btn-gold">创建房间</button>
+    </div>
+
+    <div class="cardbox">
+      <label class="field">
+        <span>已有房号</span>
+        <input id="codeInput" maxlength="5" placeholder="输入 5 位房号" autocapitalize="characters">
+      </label>
+      <button id="btnJoin" class="btn btn-ghost">加入房间</button>
+    </div>
+
+    <button id="btnRulesHome" class="linkbtn">先看玩法规则</button>
+    <p class="hint">本工具只负责建房、发牌、摆牌与亮牌，不做自动比牌、不计任何数值。</p>
+  </section>
+
+  <!-- ========== 房间 ========== -->
+  <section id="room" class="view hidden">
+    <div class="topbar">
+      <div class="roomline">
+        <span class="muted">房号</span>
+        <b id="roomCode">-----</b>
+        <button id="btnCopy" class="btn-mini">复制</button>
+      </div>
+      <div class="topbtns">
+        <button id="btnList" class="btn-mini">名单 <span id="pcount">0</span></button>
+        <button id="btnRules" class="btn-mini">玩法</button>
+        <button id="btnSetting" class="btn-mini">设置</button>
+      </div>
+    </div>
+
+    <!-- 大厅 -->
+    <div id="lobby" class="lobby">
+      <p class="lobbysub">把房号发给朋友，等人齐就发牌</p>
+      <ul id="lobbyPlayers" class="plist"></ul>
+      <div class="lobbybtns">
+        <button id="btnDeal" class="dealbtn">发牌</button>
+      </div>
+      <p class="hint" id="dealHint">房主或庄家可以发牌</p>
+    </div>
+
+    <!-- 牌桌 -->
+    <div id="table" class="table hidden">
+      <div class="roundbar">
+        <button id="btnShield" class="rbtn">黑屏</button>
+        <div class="roundinfo">
+          <div class="seq">第 <b id="seqNum">1</b> 把</div>
+          <div class="dealer">庄家 <span id="dealerName">—</span></div>
+        </div>
+        <button id="btnPeek" class="rbtn">看牌</button>
+      </div>
+
+      <div class="handwrap">
+        <div class="grp">
+          <div class="grp-label"><span>头</span><span>小的那组</span></div>
+          <div class="slots" id="headSlots"></div>
+        </div>
+        <div class="divider"><span class="ico">VS</span></div>
+        <div class="grp">
+          <div class="grp-label"><span>尾</span><span>大的那组</span></div>
+          <div class="slots" id="tailSlots"></div>
+        </div>
+      </div>
+
+      <div class="tabletools">
+        <button id="btnDeal2" class="btn-mini gold">再发一把</button>
+        <button id="btnPause" class="btn-mini">暂停</button>
+        <button id="btnLeave" class="btn-mini">离开</button>
+      </div>
+      <p class="hint">点牌翻盖，点 ⇅ 换组。比牌当面完成，各地规矩不同，按桌上说定为准。</p>
+    </div>
+  </section>
+
+  <div id="mask" class="mask hidden"><div class="sheet" id="sheet"></div></div>
+  <div id="toast" class="toast hidden"></div>
+  <div id="shieldLayer" class="shield hidden">
+    <div class="lock">🔒</div>
+    <p class="tip">已黑屏 · 点任意处恢复</p>
+  </div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
