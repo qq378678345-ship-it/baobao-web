@@ -1,0 +1,13 @@
+{
+  "name": "baobao-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "宝宝 · 朋友间四张牌（网页版）",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
